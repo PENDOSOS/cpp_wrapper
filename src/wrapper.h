@@ -3,12 +3,15 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include <tuple>
 
 template <typename Class, typename... Args>
 class Wrapper
 {
+private:
+	using Method = int (Class::*)(Args...);
 public:
-	Wrapper(Class subject, Method method, std::unordered_map<std::string, int> const& args) : subject(subject), method(method), 
+	Wrapper(Class* subject, Method method, std::unordered_map<std::string, int> const& args) : subject(subject), method(method) 
 	{
 		for (auto arg : args)
 		{
@@ -17,9 +20,7 @@ public:
 		}
 	}
 private:
-	using Method int(Class::*, Args...);
-
-	Class subject;
+	Class* subject;
 	Method method;
 
 	std::vector<int> arg_values;

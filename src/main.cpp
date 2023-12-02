@@ -27,7 +27,7 @@ int main()
 {
 	Subject subj;
 
-	Wrapper wrapper(&subj, &Subject::f3, { {"arg1", 0}, {"arg2", 0}});
+	Wrapper wrapper(&subj, &Subject::f3, {{"arg1", 0}, {"arg2", 0}});
 
 	return 0;
 }
