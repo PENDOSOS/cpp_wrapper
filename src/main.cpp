@@ -1,5 +1,6 @@
 #include <iostream>
 #include "wrapper.h"
+#include "engine.h"
 
 class Subject
 {
@@ -21,19 +22,32 @@ public:
 		std::cout << "This is f3 returns max{arg1, arg2}" << std::endl;
 		return (first > second) ? first : second;
 	}
+
+	int f4(int first)
+	{
+		std::cout << "This is f4 returns arg1" << std::endl;
+		return first;
+	}
 };
 
 int main()
 {
-	Subject subj;
+	try
+	{
+		Subject subj;
 
-	Wrapper wrapper(&subj, &Subject::f3, {{"arg1", 0}, {"arg2", 0}});
+		Wrapper wrapper(&subj, &Subject::f4, {{"arg1", 0}, {"arg2", 0}});
 
-	std::unordered_map<std::string, int> a;
-	a["arg1"] = 4;
-	a["arg2"] = 5;
+		Engine engine;
 
-	wrapper.fillValues(a);
+		engine.register_command(&wrapper, "command1");
+
+		std::cout << engine.execute("command1", { {"arg1", 4}, {"arg2", 5} }) << std::endl;
+	}
+	catch (const std::exception& err)
+	{
+		std::cout << err.what();
+	}
 
 	return 0;
 }

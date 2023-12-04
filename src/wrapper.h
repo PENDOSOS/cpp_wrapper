@@ -20,7 +20,7 @@ public:
 		}
 	}
 
-	int fillValues(std::unordered_map<std::string, int> args)
+	int registerValues(std::unordered_map<std::string, int> args)
 	{
 		for (auto const& name : arg_names)
 		{
