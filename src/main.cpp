@@ -29,5 +29,11 @@ int main()
 
 	Wrapper wrapper(&subj, &Subject::f3, {{"arg1", 0}, {"arg2", 0}});
 
+	std::unordered_map<std::string, int> a;
+	a["arg1"] = 4;
+	a["arg2"] = 5;
+
+	wrapper.fillValues(a);
+
 	return 0;
 }
