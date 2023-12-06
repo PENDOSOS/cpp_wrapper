@@ -15,5 +15,5 @@ cd out
 ```
 cmake ..
 ```
-4) Now project is situated in "out" folder
+4) Now project is situated in "out" folder.
 References: https://habr.com/ru/companies/otus/articles/655715/
